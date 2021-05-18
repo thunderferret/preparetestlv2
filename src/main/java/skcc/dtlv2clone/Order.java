@@ -1,43 +1,39 @@
 package skcc.dtlv2clone;
 
 
+import lombok.AllArgsConstructor;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.PostPersist;
 
+
+@AllArgsConstructor
 @Entity
 public class Order{
+
+    public Order() {
+
+    }
 
     @Id
             @GeneratedValue
     Long id;
 
     String name;
-    String customerid;
+    String customerId;
     double price;
     int quantity;
 
 
-    @PostPersist
-    private void publishOrderPlaced(){
-        OrderPlaced orderPlaced = new OrderPlaced();
 
-        orderPlaced.setOrderId(id);
-
-        kafka.send(orderPlaced);
-
-
-    }
-
-    private
 
     @Override
     public String toString() {
         return "Order{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", customerid='" + customerid + '\'' +
+                ", customerid='" + customerId + '\'' +
                 ", price=" + price +
                 ", quantity=" + quantity +
                 '}';
@@ -60,11 +56,11 @@ public class Order{
     }
 
     public String getCustomerid() {
-        return customerid;
+        return customerId;
     }
 
     public void setCustomerid(String customerid) {
-        this.customerid = customerid;
+        this.customerId = customerid;
     }
 
     public double getPrice() {
