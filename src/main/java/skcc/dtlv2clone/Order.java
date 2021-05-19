@@ -1,74 +1,46 @@
 package skcc.dtlv2clone;
 
 
-import lombok.AllArgsConstructor;
+import javax.persistence.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
-
-@AllArgsConstructor
 @Entity
+@Table(name="orders")
 public class Order{
 
-    public Order() {
-
-    }
 
     @Id
-            @GeneratedValue
-    Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long orderId;
 
-    String name;
-    String customerId;
-    double price;
-    int quantity;
+    private Long productId;
+    private String productName;
+    private int quantity;
+    private int price;
+    private String customerName;
+    private String customerAdder;
 
-
-
-
-    @Override
-    public String toString() {
-        return "Order{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", customerid='" + customerId + '\'' +
-                ", price=" + price +
-                ", quantity=" + quantity +
-                '}';
+    public Long getOrderId() {
+        return orderId;
     }
 
-    public Long getId() {
-        return id;
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Long getProductId() {
+        return productId;
     }
 
-    public String getName() {
-        return name;
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getProductName() {
+        return productName;
     }
 
-    public String getCustomerid() {
-        return customerId;
-    }
-
-    public void setCustomerid(String customerid) {
-        this.customerId = customerid;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
     public int getQuantity() {
@@ -78,4 +50,46 @@ public class Order{
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public String getCustomerAdder() {
+        return customerAdder;
+    }
+
+    public void setCustomerAdder(String customerAdder) {
+        this.customerAdder = customerAdder;
+    }
+
+
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "orderId=" + orderId +
+                ", productId=" + productId +
+                ", productName='" + productName + '\'' +
+                ", quantity=" + quantity +
+                ", price=" + price +
+                ", customerName='" + customerName + '\'' +
+                ", customerAdder='" + customerAdder + '\'' +
+                '}';
+    }
+
+
+
 }

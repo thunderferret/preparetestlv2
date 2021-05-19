@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Dtlv2cloneApplication {
 
     public static void main(String[] args) {
-
         SpringApplication.run(Dtlv2cloneApplication.class, args);
     }
 
